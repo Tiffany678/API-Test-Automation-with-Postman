@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "d8bf1121-db80-43e2-9ec1-45c4533a641e",
+		"name": "BookStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24763314"
+	},
+	"item": [
+		{
+			"name": "Get_User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check if the status code is 200 (OK)",
+							"pm.test(\"Login successful\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"// Check if the response has the one user",
+							"pm.test(\"Response has the login user\", function(){",
+							"   const jsonData = pm.response.json()",
+							"   pm.expect(jsonData).to.be.an(\"array\").and.to.have.lengthOf(1)",
+							"})",
+							"",
+							"",
+							"// Ensuring the user is not null",
+							"pm.test(\"Response has the login user\", function(){",
+							"   const jsonData = pm.response.json()",
+							"   pm.expect(jsonData[0]).to.have.property(\"id\")",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.qacurry.com/json/get_login/",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"qacurry",
+						"com"
+					],
+					"path": [
+						"json",
+						"get_login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Retrieve data in json format",
+							"const jsonData = pm.response.json();",
+							"",
+							"// Check if the status code is 200 (OK)",
+							"pm.test(\"Get Products - Success\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Check if the responsTime is less than 0.2 seconds",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"// Check if the response has at least one product",
+							"pm.test(\"Get Products - Success\", function () {",
+							"   pm.expect(jsonData).to.be.an(\"array\");",
+							"   pm.expect(jsonData).to.have.lengthOf.at.least(1);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.qacurry.com/json/get_products/",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"qacurry",
+						"com"
+					],
+					"path": [
+						"json",
+						"get_products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post_Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Create a new post",
+							"pm.test(\"Order placed successfully\", async ()=> {",
+							"    const jsonData = await pm.response.json()",
+							"",
+							"    // Store Order_id variable to collection",
+							"    pm.collectionVariables.set(\"Order_id\", jsonData[0][\"Order ID\"]);",
+							"",
+							"    // Print in the console and get the order id",
+							"    console.log(\"Stored Order ID in Collection Variable:\", pm.collectionVariables.get(\"Order_id\"));",
+							"",
+							"    // Check the status Code",
+							"   pm.response.to.have.status(200);",
+							"",
+							"   // check response body",
+							"   pm.expect(jsonData[0]).to.have.property(\"Order ID\"); // Use exact key",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followOriginalHttpMethod": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n {\n   \"quantity\": 1,\n   \"product_id\": 1\n },\n {\n   \"quantity\": 2,\n   \"product_id\": 2\n }\n]\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bookstore.qacurry.com/json/post_order/",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"qacurry",
+						"com"
+					],
+					"path": [
+						"json",
+						"post_order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_OrderDetail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json()",
+							"",
+							"// Check if the status code is 200 (ok)",
+							"pm.test(\"Get Order Details - Success\", function () {",
+							"     pm.response.to.have.status(200)",
+							"});",
+							"",
+							"// Check if the order has at least one item",
+							"pm.test(\"Get Order Details - Success\", function () {",
+							"   pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+							"});",
+							"",
+							"// Check if the order id is correct for the order.",
+							"pm.test(\"Get Order Details - Success\", function () {",
+							"    pm.expect(jsonData[0].order_id).to.eql(String(pm.collectionVariables.get(\"Order_id\")));",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://bookstore.qacurry.com/json/get_order/?order_id={{Order_id}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"qacurry",
+						"com"
+					],
+					"path": [
+						"json",
+						"get_order",
+						""
+					],
+					"query": [
+						{
+							"key": "order_id",
+							"value": "{{Order_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{userName}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"let userName = \"student@qacurry.com\";",
+					"let password = \"Q@curry\";",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userName",
+			"value": "student@qacurry.com",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "Q@curry",
+			"type": "string"
+		},
+		{
+			"key": "Order_id",
+			"value": "2122"
+		}
+	]
+}
