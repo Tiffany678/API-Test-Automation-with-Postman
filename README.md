@@ -26,10 +26,12 @@ Postman is a powerful tool for API testing and regression automation, enabling d
 
 # Setup
 
-Before writing our test case, we will first create a collection and environments. Within the collection and environment, we will define a set of variables and use them throughout the test cases. This approach helps organize and group API requests across different environments, such as development and quality assurance (QA), making the testing process more efficient and scalable..
+Before writing our test case, we will first create a collection and environments. Within the collection and environment, we will define a set of variables and use them throughout the test cases. This approach helps organize and group API requests across different environments, such as development and quality assurance (QA), making the testing process more efficient and scalable.
 
 **Collection Setup**
+
 In Postman, variables created within a collection are available throughout that collection, effectively providing project-level scope. Postman uses key-value pairs to define variables, where each variable name represents a key and can be referenced using {{key}}.
+
 <img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Collection_Creation.png" alt="Collection Creation" />
 
 **Next**, we will create variables such as userName and password in the Variables tab and reuse them for authentication and the test scripts.
@@ -38,11 +40,14 @@ On the authentication tab, the testing website (a bookstore) uses Basic Auth. We
 
 Step 1: Select Basic Auth as the authentication type.
 Step 2: Create and assign value to the userName and password variables.
+
 <img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Collection_Variable.png" alt="Collection Variable" />
 <img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Collection_Authorization.png" alt="Collection Authorization" />
 
 **Environment Setup**
+
 To support testing across different phases, we will create separate environments for Development and QA. This will allow us to run the same test cases under different conditions, ensuring comprehensive API validation across different stages of the software development lifecycle.
+
 <img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Environments_Dev.png" alt="Collection Authorization" />
 <img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Environments_QA.png" alt="Collection Authorization" />
 
@@ -91,11 +96,23 @@ pm.test("Response has the login user", function(){
 3. Add test scripts
 
 ```sh
+// Retrieve data in json format
+const jsonData = pm.response.json();
+
+// Check if the status code is 200 (OK)
 pm.test("Get Products - Success", function () {
-  pm.response.to.have.status(200);
-  var jsonData = pm.response.json();
-  pm.expect(jsonData).to.be.an("array");
-  pm.expect(jsonData).to.have.lengthOf.at.least(1);
+   pm.response.to.have.status(200);
+});
+
+// Check if the responsTime is less than 0.2 seconds
+pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
+});
+
+// Check if the response has at least one product
+pm.test("Get Products - Success", function () {
+   pm.expect(jsonData).to.be.an("array");
+   pm.expect(jsonData).to.have.lengthOf.at.least(1);
 });
 ```
 
@@ -114,7 +131,7 @@ src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/im
 ```sh
 // Create a new post
 pm.test("Order placed successfully", async ()=> {
-   const jsonData = await pm.response.json()
+    const jsonData = await pm.response.json()
 
     // Check the status Code
     pm.response.to.have.status(200);
@@ -236,16 +253,16 @@ npm install -g newman-reporter-html
 newman run BookStore.json
 ```
 
-1. Generate an HTML report in the current directory:
+5. Generate an HTML report in the current directory:
 
 ```sh
 newman run BookStore.json -r html --reporter-html-export cli_Report.html
 ```
 
 <img style="width:600px; height:450px;"
-src="https://https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Newman_Explore.png" alt="Newman_Explore"/>
+src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Newman_Explore.png" alt="Newman Explore"/>
 <img style="width:600px; height:450px;"
-src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Newman_CLI.png" alt="Newman_CLI"/>
+src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/Newman_CLI.png" alt="Newman CLI"/>
 
 # **Monitoring API Performance with Postman Monitor**
 
