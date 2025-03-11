@@ -6,23 +6,23 @@ Postman is a powerful tool for API testing and regression automation, enabling d
 
 **Content Breakdown:**
 
-1. <ins>Setup</ins> (#setup)
+1. [Setup](#setup)
 
    - Collection Setup
      - Credentials Management
      - Collection variables
    - Environments Setup
 
-2. <ins>API Automation Testing</ins> (#api-automation-testing)
+2. [API Automation Testing](#api-automation-testing)
 
    - Login Validation
    - Retrieving Product Listing
    - Check Process
    - Fetching Order Details
 
-3. Running a Collection in CLI Using Newman
-4. Monitoring API Performance with Postman Monitor
-5. Conclusion
+3. [Running a Collection in CLI Using Newman](#running-a-collection-in-cli-using-newman)
+4. [Monitoring API Performance with Postman Monitor](#monitoring-api-performance-with-postman-Monitor)
+5. [Conclusion](#conclusion)
 
 # Setup
 
