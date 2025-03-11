@@ -6,14 +6,14 @@ Postman is a powerful tool for API testing and regression automation, enabling d
 
 **Content Breakdown:**
 
-1. Setup
+1. <ins>Setup</ins> (#setup)
 
    - Collection Setup
      - Credentials Management
      - Collection variables
    - Environments Setup
 
-2. API Automation Testing:
+2. <ins>API Automation Testing</ins> (#api-automation-testing)
 
    - Login Validation
    - Retrieving Product Listing
