@@ -17,7 +17,7 @@ Postman is a powerful tool for API testing and regression automation, enabling d
 
    - Login Validation
    - Retrieving Product Listing
-   - Check Process
+   - Checkout Verification
    - Fetching Order Details
 
 3. [Running a Collection in CLI Using Newman](#running-a-collection-in-cli-using-newman)
