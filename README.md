@@ -6,23 +6,38 @@ Postman is a powerful tool for API testing and regression automation, enabling d
 
 **Content Breakdown:**
 
-1. [Setup](#setup)
+1. [Test Case Template For API Testing](#Test-Case-Template-For-API-Testing)
+
+2. [Setup](#setup)
 
    - Collection Setup
      - Credentials Management
      - Collection variables
    - Environments Setup
 
-2. [API Automation Testing](#api-automation-testing)
+3. [API Automation Testing](#api-automation-testing)
 
    - Login Validation
    - Retrieving Product Listing
    - Checkout Verification
    - Fetching Order Details
 
-3. [Running a Collection in CLI Using Newman](#running-a-collection-in-cli-using-newman)
-4. [Monitoring API Performance with Postman Monitor](#monitoring-api-performance-with-postman-Monitor)
-5. [Conclusion](#conclusion)
+4. [Running a Collection in CLI Using Newman](#running-a-collection-in-cli-using-newman)
+5. [Monitoring API Performance with Postman Monitor](#monitoring-api-performance-with-postman-Monitor)
+6. [Conclusion](#conclusion)
+
+# Test Case Template For API Testing
+
+Providing standardized templates helps maintain consistency and ensures that all necessary details are included in each test case. A well-structured template should include sections for:
+• Test Case ID – A unique identifier for tracking
+• Description – A brief overview of the test case
+• Preconditions – Any conditions that must be met before execution
+• Test Steps – A step-by-step guide to performing the test
+• Expected Results – The anticipated outcome if the test passes
+• Actual Results – The observed outcome after execution
+• Test Case Design Strategy – The objection for the test case
+
+<img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/API_TestCase.png"
 
 # Setup
 
