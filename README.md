@@ -29,15 +29,16 @@ Postman is a powerful tool for API testing and regression automation, enabling d
 # Test Case Template For API Testing
 
 Providing standardized templates helps maintain consistency and ensures that all necessary details are included in each test case. A well-structured template should include sections for:
-• Test Case ID – A unique identifier for tracking
-• Description – A brief overview of the test case
-• Preconditions – Any conditions that must be met before execution
-• Test Steps – A step-by-step guide to performing the test
-• Expected Results – The anticipated outcome if the test passes
-• Actual Results – The observed outcome after execution
-• Test Case Design Strategy – The objection for the test case
 
-<img style="width:900px; height:400px;" src="/img/API_TestCase.png" alt="API_TestCase" />
+1. Test Case ID – A unique identifier for tracking
+2. Description – A brief overview of the test case
+3. Preconditions – Any conditions that must be met before execution
+4. Test Steps – A step-by-step guide to performing the test
+5. Expected Results – The anticipated outcome if the test passes
+6. Actual Results – The observed outcome after execution
+7. Test Case Design Strategy – The objection for the test case
+
+<img style="width:920px; height:400px;" src="/img/API_TestCase.png" alt="API_TestCase" />
 
 # Setup
 
