@@ -36,7 +36,7 @@ Providing standardized templates helps maintain consistency and ensures that all
 4. Test Steps – A step-by-step guide to performing the test
 5. Expected Results – The anticipated outcome if the test passes
 6. Actual Results – The observed outcome after execution
-7. Test Case Design Strategy – The objection for the test case
+7. Test Case Design Strategy – The objective of the test case
 
 <img style="width:920px; height:400px;" src="/img/API_TestCase.png" alt="API_TestCase" />
 
