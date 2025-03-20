@@ -42,7 +42,7 @@ Providing standardized templates helps maintain consistency and ensures that all
 
 # Setup
 
-Before writing our test case, we will first create a collection and environments. Within the collection and environment, we will define a set of variables and use them throughout the test cases. This approach helps organize and group API requests across different environments, such as development and quality assurance (QA), making the testing process more efficient and scalable.
+Before creating our test scripts, we will first create a collection and environments in Postman. Within the collection and environment, we will define a set of variables and use them throughout the test cases. This approach helps organize and group API requests across different environments, such as development and quality assurance (QA), making the testing process more efficient and scalable.
 
 **Collection Setup**
 
