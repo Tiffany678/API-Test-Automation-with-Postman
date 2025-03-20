@@ -37,7 +37,7 @@ Providing standardized templates helps maintain consistency and ensures that all
 • Actual Results – The observed outcome after execution
 • Test Case Design Strategy – The objection for the test case
 
-<img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/API_TestCase.png"
+<img style="width:600px; height:450px;" src="https://github.com/Tiffany678/API-Test-Automation-with-Postman/blob/main/img/API_TestCase.png" alt="API_TestCase" />
 
 # Setup
 
